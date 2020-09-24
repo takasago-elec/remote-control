@@ -20,12 +20,12 @@
 
 /* スマホ向けレイアウト */
 @media all and (max-width: 670px) {
-  .container h1 {
+  .top-wrapper h1 {
     font-size: 55px;
   }
 
   .heading h2 {
-    font-size: 55px;
+    font-size: 45px;
   }
 
 
@@ -73,5 +73,6 @@
 
   footer a {
     font-size: 30px;
+    text-align: center;
   }
 }
