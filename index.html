@@ -1,0 +1,295 @@
+
+<!doctype html>
+<!--
+Copyright 2017-2020 JellyWare Inc. All Rights Reserved.
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BlueJelly">
+    <meta name="viewport" content="width=640, maximum-scale=1.0, user-scalable=yes">
+    <title>高砂　遠隔制御</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="bluejelly.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-left">
+          <!--高砂のロゴほしい-->
+          <img class="logo" src="/img/h_inq.png">
+        </div>
+
+        <span class="fa fa-bars menu-icon"></span>
+
+        <div class="header-right">
+        </div>
+      </div>
+    </header>
+
+    <div class="top-wrapper">
+      <div class="container">
+        <h1></h1>
+        <h1>takasago-elec.</h1>
+        <p>人と地球にやさしい企業でありたい・・・</p>
+        <p>流体制御のソリューションプロバイダー</p>
+
+      </div>
+    </div>
+
+    <div class="lesson-wrapper">
+      <div class="container">
+        <div class="heading">
+          <h2>遠隔制御リスト</h2>
+        </div>
+
+        <div class="lessons">
+
+          <div class="lesson">
+            <div class="lesson-icon">
+              <img src="https://takasago-elec.co.jp/img/index/valve_2.jpg">
+              <p>Unit1</p>
+            </div>
+            <div class="lesson-btn">
+
+              <input id="write_value" class="btn" value="up" size="20">
+              <button id="write" class="btn on p1">ON</button>
+
+
+              <input id="write_valuee" class="btn" value="down" size="20">
+              <button id="writee" class="btn off p1">OFF</button>
+
+              <div id="device_name"> </div>
+              <div id="uuid_name"> </div>
+              <div id="status"> </div>
+
+            </div>
+          </div>
+
+          <div class="lesson">
+            <div class="lesson-icon">
+              <img src="https://takasago-elec.co.jp/img/index/pump_2.jpg">
+              <p>Unit2</p>
+            </div>
+            <div class="lesson-btn">
+
+              <input id="write_value2" class="btn" value="up" size="20">
+              <button id="write2" class="btn on p2">ON</button>
+
+              <input id="write_valuee2" class="btn" value="down" size="20">
+              <button id="writee2" class="btn off p2">OFF</button>
+
+              <div id="device_name2"> </div>
+              <div id="uuid_name2"> </div>
+              <div id="status2"> </div>
+
+            </div>
+          </div>
+
+          <div class="lesson">
+            <div class="lesson-icon">
+              <img src="https://takasago-elec.co.jp/conts/wp-content/uploads/2016/08/manicip_3.jpg">
+              <p>Unit3</p>
+            </div>
+            <div class="lesson-btn">
+
+              <input id="write_value3" class="btn" value="up" size="20">
+              <button id="write3" class="btn on p3">ON</button>
+
+
+              <input id="write_valuee3" class="btn" value="down" size="20">
+              <button id="writee3" class="btn off p3">OFF</button>
+
+              <div id="device_name3"> </div>
+              <div id="uuid_name3"> </div>
+              <div id="status3"> </div>
+
+            </div>
+          </div>
+
+          <div class="lesson">
+            <div class="lesson-icon">
+              <img src="https://takasago-elec.co.jp/img/index/mainprod4.jpg">
+              <p>Unit4</p>
+            </div>
+            <div class="lesson-btn">
+
+              <input id="write_value4" class="btn" value="up" size="20">
+              <button id="write4" class="btn on p4">ON</button>
+
+
+              <input id="write_valuee4" class="btn" value="down" size="20">
+              <button id="writee4" class="btn off p4">OFF</button>
+
+              <div id="device_name4"> </div>
+              <div id="uuid_name4"> </div>
+              <div id="status4"> </div>
+
+            </div>
+          </div>
+
+          <div class="clear"></div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <script>
+    //--------------------------------------------------
+    //Global変数
+    //--------------------------------------------------
+    //BlueJellyのインスタンス生成
+    const ble = new BlueJelly();
+    const ble2 = new BlueJelly();
+    const ble3 = new BlueJelly();
+    const ble4 = new BlueJelly();
+
+    //--------------------------------------------------
+    //ロード時の処理
+    //--------------------------------------------------
+    window.onload = function () {
+      //UUIDの設定
+      ble.setUUID("UUID1", BlueJelly.MICROBIT_UART_SERVICE, BlueJelly.MICROBIT_RX_CHARACTERISTIC);
+      ble2.setUUID("UUID1", BlueJelly.MICROBIT_UART_SERVICE, BlueJelly.MICROBIT_RX_CHARACTERISTIC);
+      ble3.setUUID("UUID1", BlueJelly.MICROBIT_UART_SERVICE, BlueJelly.MICROBIT_RX_CHARACTERISTIC);
+      ble4.setUUID("UUID1", BlueJelly.MICROBIT_UART_SERVICE, BlueJelly.MICROBIT_RX_CHARACTERISTIC);
+    }
+
+
+    //--------------------------------------------------
+    //Scan後の処理
+    //--------------------------------------------------
+
+
+    //--------------------------------------------------
+    //ConnectGATT後の処理
+    //--------------------------------------------------
+
+    //--------------------------------------------------
+    //Write後の処理
+    //--------------------------------------------------
+    ble.onWrite = function(uuid){
+      document.getElementById('uuid_name').innerHTML = uuid;
+      document.getElementById('status').innerHTML = "接続OK"
+    }
+
+    ble2.onWrite = function(uuid){
+      document.getElementById('uuid_name2').innerHTML = uuid;
+      document.getElementById('status2').innerHTML = "接続OK"
+    }
+
+    ble3.onWrite = function(uuid){
+      document.getElementById('uuid_name3').innerHTML = uuid;
+      document.getElementById('status3').innerHTML = "接続OK"
+    }
+
+    ble4.onWrite = function(uuid){
+      document.getElementById('uuid_name4').innerHTML = uuid;
+      document.getElementById('status4').innerHTML = "接続OK"
+    }
+
+
+
+    //-------------------------------------------------
+    //ボタンが押された時のイベント登録
+    //--------------------------------------------------
+    document.getElementById('write').addEventListener('click', function() {
+      //フォーマットに従って値を変換
+      const textEncoder = new TextEncoder();
+      const text_data = document.getElementById('write_value').value;
+      const text_data_encoded = textEncoder.encode(text_data + '\n');
+
+      //write
+      ble.write('UUID1', text_data_encoded);
+    });
+
+    document.getElementById('writee').addEventListener('click', function() {
+      //フォーマットに従って値を変換
+      const textEncoder = new TextEncoder();
+      const text_data = document.getElementById('write_valuee').value;
+      const text_data_encoded = textEncoder.encode(text_data + '\n');
+
+      //write
+      ble.write('UUID1', text_data_encoded);
+    });
+
+    document.getElementById('write2').addEventListener('click', function() {
+      //フォーマットに従って値を変換
+      const textEncoder = new TextEncoder();
+      const text_data = document.getElementById('write_value2').value;
+      const text_data_encoded = textEncoder.encode(text_data + '\n');
+
+      //write
+      ble2.write('UUID1', text_data_encoded);
+    });
+
+    document.getElementById('writee2').addEventListener('click', function() {
+      //フォーマットに従って値を変換
+      const textEncoder = new TextEncoder();
+      const text_data = document.getElementById('write_valuee2').value;
+      const text_data_encoded = textEncoder.encode(text_data + '\n');
+
+      //write
+      ble2.write('UUID1', text_data_encoded);
+    });
+
+    document.getElementById('write3').addEventListener('click', function() {
+      //フォーマットに従って値を変換
+      const textEncoder = new TextEncoder();
+      const text_data = document.getElementById('write_value3').value;
+      const text_data_encoded = textEncoder.encode(text_data + '\n');
+
+      //write
+      ble3.write('UUID1', text_data_encoded);
+    });
+
+    document.getElementById('writee3').addEventListener('click', function() {
+      //フォーマットに従って値を変換
+      const textEncoder = new TextEncoder();
+      const text_data = document.getElementById('write_valuee3').value;
+      const text_data_encoded = textEncoder.encode(text_data + '\n');
+
+      //write
+      ble3.write('UUID1', text_data_encoded);
+    });
+
+    document.getElementById('write4').addEventListener('click', function() {
+      //フォーマットに従って値を変換
+      const textEncoder = new TextEncoder();
+      const text_data = document.getElementById('write_value4').value;
+      const text_data_encoded = textEncoder.encode(text_data + '\n');
+
+      //write
+      ble4.write('UUID1', text_data_encoded);
+    });
+
+    document.getElementById('writee4').addEventListener('click', function() {
+      //フォーマットに従って値を変換
+      const textEncoder = new TextEncoder();
+      const text_data = document.getElementById('write_valuee4').value;
+      const text_data_encoded = textEncoder.encode(text_data + '\n');
+
+      //write
+      ble4.write('UUID1', text_data_encoded);
+    });
+
+
+    </script>
+
+    <footer>
+      <div class="container">
+        <img src="">
+        <p>高砂電気工業株式会社</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
