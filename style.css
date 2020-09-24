@@ -11,6 +11,7 @@ a {
   text-decoration: none;
 }
 
+
 .clear {
   clear: left;
 }
@@ -78,6 +79,7 @@ a {
 
 .btn:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 .on {
@@ -125,6 +127,14 @@ header {
 
 .header-left {
   float: left;
+  color: white;
+  font-size: 30px;
+  line-height: 65px;
+  text-align: center;
+}
+
+.header-center {
+
 }
 
 .header-right {
@@ -200,12 +210,13 @@ footer img {
   width: 125px;
 }
 
-footer p {
-  color: #b3aeb5;
-  font-size: 12px;
+footer a {
+  font-size: 20px;
+  float: right;
+  color: #555555;
 }
 
 footer {
   padding-top: 30px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
