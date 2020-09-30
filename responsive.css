@@ -32,8 +32,12 @@
     width: 100%;
   }
 
+  .lesson p {
+    font-size: 25px;
+  }
+
   .btn {
-    width: 100%;
+    width: 50%;
   }
 
   .top-wrapper {
@@ -49,7 +53,7 @@
   }
 
   .on {
-    text-align: center;
+    margin-bottom: 0;
   }
 
   footer a {
