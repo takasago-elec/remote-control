@@ -69,11 +69,13 @@ a {
   margin-bottom: 30px;
 }
 
-.on:active {
+.on.push {
   position: relative;
   top: 7px;
   box-shadow: none;
+  pointer-events: none;
 }
+
 
 .off {
   background-color: #008080;
@@ -81,11 +83,13 @@ a {
   margin: 30px 0;
 }
 
-.off:active {
+.off.push {
   position: relative;
   top: 7px;
   box-shadow: none;
+  pointer-events: none;
 }
+
 
 header {
   height: 65px;
